@@ -1,0 +1,33 @@
+name: Deploy main to demo
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 💾
+        uses: actions/checkout@v3
+      - name: Set up Node 📝
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+      - name: Install 🔧
+        run: |
+          npm install
+      - name: Build 🏗️
+        run: |
+          npm run build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: demo
+          folder: ./dist
+          clean: true
