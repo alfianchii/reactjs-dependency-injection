@@ -3,9 +3,11 @@ import DisplayTheme from "../components/DisplayTheme";
 import { useAppContext } from "../hooks/useAppContext";
 
 const Profile = () => {
-  const {
-    user: { username },
-  } = useAppContext();
+  const [
+    {
+      user: { username },
+    },
+  ] = useAppContext();
   return (
     <section className={`mt-10`}>
       <div className={`mb-1`}>

@@ -4,12 +4,15 @@ import Button from "./Button";
 import { useAppContext } from "../hooks/useAppContext";
 
 const ChangeUsername = () => {
-  const { user, setUser } = useAppContext();
+  const [{ user }, dispatch] = useAppContext();
   const [newUsername, setNewUsername] = useState<string>("");
 
   const changeUsernameHandler = (event: React.FormEvent) => {
     event.preventDefault();
-    setUser({ ...user, username: newUsername });
+    dispatch({
+      type: "UPDATE_USER",
+      payload: { ...user, username: newUsername },
+    });
   };
 
   return (
@@ -19,7 +22,7 @@ const ChangeUsername = () => {
         defaultValue={user.username}
         onChange={(e) => setNewUsername(e.target.value)}
       />
-      <Button>Change!</Button>
+      <Button className={`dark:bg-sky-500`}>Change!</Button>
     </form>
   );
 };

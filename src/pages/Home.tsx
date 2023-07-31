@@ -3,7 +3,11 @@ import ToggleTheme from "../components/ToggleTheme";
 import { useAppContext } from "../hooks/useAppContext";
 
 const Home = () => {
-  const { user } = useAppContext();
+  const [
+    {
+      user: { username, avatar },
+    },
+  ] = useAppContext();
   return (
     <section className={`mt-10`}>
       <div className={`mb-3`}>
@@ -16,13 +20,13 @@ const Home = () => {
             >
               Home
             </h1>
-            <p className={`text-sm`}>Welcome back, {user.username}!</p>
+            <p className={`text-sm`}>Welcome back, {username}!</p>
           </div>
           <div>
             <img
               width={100}
               height={100}
-              src={user.avatar}
+              src={avatar}
               alt="Avatar"
               className={`rounded-lg`}
             />

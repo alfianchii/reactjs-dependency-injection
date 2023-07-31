@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import avatar from "../assets/ranpo-1.jpg";
 
 type Theme = "light" | "dark";
@@ -12,49 +12,58 @@ interface UserProps {
   avatar: string;
 }
 
-export interface AppContextProps {
-  user: UserProps;
-  setUser: React.Dispatch<React.SetStateAction<UserProps>>;
-  theme: Theme;
-  setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+interface AppAction {
+  type: "UPDATE_USER" | "TOGGLE_THEME";
+  payload?: UserProps;
 }
 
-const initialStateUser: UserProps = {
-  username: "",
-  avatar: "",
-};
+interface AppContextProps {
+  user: UserProps;
+  theme: Theme;
+}
 
-const initialContext: AppContextProps = {
+export type AppContextValue = [AppContextProps, React.Dispatch<AppAction>];
+
+const initialState: AppContextProps = {
   user: {
     username: "",
     avatar: "",
   },
-  setUser: (user: React.SetStateAction<UserProps>) => user,
   theme: "light",
-  setTheme: (theme: React.SetStateAction<Theme>) => theme,
 };
 
-export const AppContext = createContext<AppContextProps>(initialContext);
+const initialContext: AppContextValue = [initialState, () => null];
+
+export const AppContext = createContext<AppContextValue>(initialContext);
+
+const reducer = (
+  state: AppContextProps,
+  { type, payload = initialState.user }: AppAction
+): AppContextProps => {
+  switch (type) {
+    case "UPDATE_USER":
+      return { ...state, user: payload };
+    case "TOGGLE_THEME":
+      return { ...state, theme: state.theme === "light" ? "dark" : "light" };
+    default:
+      throw new Error(`Unexpected type: ${type}`);
+  }
+};
 
 const AppProvider = ({ children }: Props) => {
   const baseUrl: string = import.meta.env.BASE_URL;
-  const [user, setUser] = useState<UserProps>(initialStateUser);
-  const [theme, setTheme] = useState<Theme>("light");
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const data: UserProps = {
+    const payload: UserProps = {
       username: "alfianchii",
       avatar,
     };
-    setUser(data);
+    dispatch({ type: "UPDATE_USER", payload });
   }, [baseUrl]);
 
-  const appContextValue: AppContextProps = {
-    user,
-    setUser,
-    theme,
-    setTheme,
-  };
+  const appContextValue: AppContextValue = [state, dispatch];
 
   return (
     <AppContext.Provider value={appContextValue}>
