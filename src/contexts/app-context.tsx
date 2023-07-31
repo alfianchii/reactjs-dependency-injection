@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import avatar from "../assets/earl-phantomhive-1.jpg";
 
 type Theme = "light" | "dark";
 
@@ -43,7 +44,7 @@ const AppProvider = ({ children }: Props) => {
   useEffect(() => {
     const data: UserProps = {
       username: "alfianchii",
-      avatar: `${baseUrl}src/assets/earl-phantomhive-1.jpg`,
+      avatar,
     };
     setUser(data);
   }, [baseUrl]);
