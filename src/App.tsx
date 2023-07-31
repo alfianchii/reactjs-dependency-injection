@@ -10,6 +10,7 @@ import Reducer from "./pages/Reducer";
 import ReducerProvider from "./contexts/reducer-context";
 
 function App() {
+  const baseUrl: string = import.meta.env.BASE_URL;
   const status: boolean = useStatus();
 
   return (
@@ -25,16 +26,16 @@ function App() {
               <Card.Body>
                 <Navbar
                   elements={{
-                    home: "/reactjs-dependency-injection/",
-                    profile: "/reactjs-dependency-injection/profile",
-                    reducer: "/reactjs-dependency-injection/reducer",
+                    home: baseUrl,
+                    profile: `${baseUrl}profile`,
+                    reducer: `${baseUrl}reducer`,
                   }}
                 />
 
                 <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/profile" element={<Profile />} />
-                  <Route path="/reducer" element={<Reducer />} />
+                  <Route path={`${baseUrl}`} element={<Home />} />
+                  <Route path={`${baseUrl}profile`} element={<Profile />} />
+                  <Route path={`${baseUrl}reducer`} element={<Reducer />} />
                 </Routes>
               </Card.Body>
             </Card>
