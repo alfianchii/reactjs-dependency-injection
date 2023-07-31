@@ -2,6 +2,11 @@ import { useAppContext } from "../hooks/useAppContext";
 
 const ToggleTheme = () => {
   const [{ theme }, dispatch] = useAppContext();
+  const body = document.documentElement;
+
+  theme === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? body.setAttribute("data-mode", "dark")
+    : body.removeAttribute("data-mode");
 
   const toggleThemeHandler = () => dispatch({ type: "TOGGLE_THEME" });
 

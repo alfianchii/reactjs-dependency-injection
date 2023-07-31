@@ -52,13 +52,7 @@ const reducer = (
 
 const AppProvider = ({ children }: Props) => {
   const baseUrl: string = import.meta.env.BASE_URL;
-  const body = document.documentElement;
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  state.theme === "dark" ||
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? body.setAttribute("data-mode", "dark")
-    : body.removeAttribute("data-mode");
 
   useEffect(() => {
     const payload: UserProps = {

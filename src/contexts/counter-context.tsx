@@ -13,20 +13,20 @@ interface AppState {
   theme: Theme;
 }
 
-export type ReducerContextProps = [AppState, React.Dispatch<AppAction>];
+export type CounterContextProps = [AppState, React.Dispatch<AppAction>];
 
 interface AppAction {
   type: Counter | "TOGGLE_THEME";
   payload?: number;
 }
 
-const initialContext: ReducerContextProps = [
+const initialContext: CounterContextProps = [
   { count: 0, theme: "light" },
   () => null,
 ];
 
-export const ReducerContext =
-  createContext<ReducerContextProps>(initialContext);
+export const CounterContext =
+  createContext<CounterContextProps>(initialContext);
 
 const reducer = (
   state: AppState,
@@ -48,16 +48,16 @@ const reducer = (
 
 const initialState: AppState = { count: 0, theme: "light" };
 
-const ReducerProvider = ({ children }: Props) => {
+const CounterProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const reducerContextValue: ReducerContextProps = [state, dispatch];
+  const counterContextValue: CounterContextProps = [state, dispatch];
 
   return (
-    <ReducerContext.Provider value={reducerContextValue}>
+    <CounterContext.Provider value={counterContextValue}>
       {children}
-    </ReducerContext.Provider>
+    </CounterContext.Provider>
   );
 };
 
-export default ReducerProvider;
+export default CounterProvider;

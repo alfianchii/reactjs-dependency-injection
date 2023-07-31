@@ -6,9 +6,10 @@ import useStatus from "./hooks/useStatus";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import AppProvider from "./contexts/app-context";
-import Reducer from "./pages/Reducer";
-import ReducerProvider from "./contexts/reducer-context";
 import NotFound from "./pages/NotFound";
+import Counter from "./pages/Counter";
+import CounterSetting from "./pages/CounterSetting";
+import CounterProvider from "./contexts/counter-context";
 
 function App() {
   const baseUrl: string = import.meta.env.BASE_URL;
@@ -17,7 +18,7 @@ function App() {
   return (
     <>
       <AppProvider>
-        <ReducerProvider>
+        <CounterProvider>
           <PlaceContentCenter className={`box-border`}>
             <Card>
               <Card.Title className={`select-none`}>
@@ -29,20 +30,25 @@ function App() {
                   elements={{
                     home: baseUrl,
                     profile: `${baseUrl}profile`,
-                    reducer: `${baseUrl}reducer`,
+                    counter: `${baseUrl}counter`,
+                    counterSettings: `${baseUrl}counter-settings`,
                   }}
                 />
 
                 <Routes>
                   <Route path={`${baseUrl}`} element={<Home />} />
                   <Route path={`${baseUrl}profile`} element={<Profile />} />
-                  <Route path={`${baseUrl}reducer`} element={<Reducer />} />
+                  <Route path={`${baseUrl}counter`} element={<Counter />} />
+                  <Route
+                    path={`${baseUrl}counter-settings`}
+                    element={<CounterSetting />}
+                  />
                   <Route path={`*`} element={<NotFound />} />
                 </Routes>
               </Card.Body>
             </Card>
           </PlaceContentCenter>
-        </ReducerProvider>
+        </CounterProvider>
       </AppProvider>
     </>
   );
