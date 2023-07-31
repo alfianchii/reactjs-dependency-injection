@@ -2,11 +2,6 @@ import { useAppContext } from "../hooks/useAppContext";
 
 const DisplayTheme = () => {
   const [{ theme }] = useAppContext();
-  const body = document.documentElement;
-
-  theme === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? body.setAttribute("data-mode", "dark")
-    : body.removeAttribute("data-mode");
 
   return (
     <p className={`text-center font-medium`}>
