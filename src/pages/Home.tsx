@@ -19,7 +19,13 @@ const Home = () => {
             <p className={`text-sm`}>Welcome back, {user.username}!</p>
           </div>
           <div>
-            <img src={user.avatar} alt="Avatar" className={`rounded-lg`} />
+            <img
+              width={100}
+              height={100}
+              src={user.avatar}
+              alt="Avatar"
+              className={`rounded-lg`}
+            />
           </div>
         </div>
         <div className={`mt-4`}>
