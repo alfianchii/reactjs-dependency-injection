@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import AppProvider from "./contexts/app-context";
 import Reducer from "./pages/Reducer";
 import ReducerProvider from "./contexts/reducer-context";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const baseUrl: string = import.meta.env.BASE_URL;
@@ -36,6 +37,7 @@ function App() {
                   <Route path={`${baseUrl}`} element={<Home />} />
                   <Route path={`${baseUrl}profile`} element={<Profile />} />
                   <Route path={`${baseUrl}reducer`} element={<Reducer />} />
+                  <Route path={`*`} element={<NotFound />} />
                 </Routes>
               </Card.Body>
             </Card>
