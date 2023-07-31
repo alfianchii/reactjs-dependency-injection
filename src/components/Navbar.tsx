@@ -22,11 +22,11 @@ const Navbar = ({ elements, className = "" }: Props) => {
               to={elements[nav]}
               key={index}
               onClick={() => changePathHandler(elements[nav])}
-              className={`pb-5 outline-none transition-all duration-300 hover:border-b hover:border-b-indigo-400 hover:text-indigo-400 focus:border-b focus:border-b-indigo-400 focus:text-indigo-400
+              className={`border border-transparent pb-5 outline-none transition-all duration-300 hover:border-b-indigo-400 hover:text-indigo-400 focus:border-b focus:border-b-indigo-400 focus:text-indigo-400
               ${
                 currPath === elements[nav]
-                  ? "border-b border-b-indigo-700 text-indigo-700"
-                  : "text-gray-700"
+                  ? "border-b-indigo-700 text-indigo-700 dark:border-b-indigo-400 dark:text-indigo-400"
+                  : "text-gray-700 dark:text-slate-400"
               }
             `}
             >

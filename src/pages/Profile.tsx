@@ -10,10 +10,12 @@ const Profile = () => {
     <section className={`mt-10`}>
       <div className={`mb-1`}>
         <div className={`flex flex-col`}>
-          <h1 className={`text-xl`}>Profile</h1>
-          <p className={`font-thin`}>Username: {username}</p>
+          <h1 className={`text-xl dark:text-white`}>Profile</h1>
+          <p>Username: {username}</p>
         </div>
-        <div className={`mt-4`}>
+        <div
+          className={`mt-4 border-b pb-5 transition-colors duration-300 dark:border-b-slate-600`}
+        >
           <ChangeUsername />
         </div>
         <div className={`mt-4`}>

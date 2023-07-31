@@ -3,6 +3,12 @@ import { useReducerContext } from "../hooks/useReducerContext";
 
 const Reducer = () => {
   const [state, dispatch] = useReducerContext();
+  const body = document.documentElement;
+
+  state.theme === "dark" ||
+  window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? body.setAttribute("data-mode", "dark")
+    : body.removeAttribute("data-mode");
 
   const decreaseHandler = () => dispatch({ type: "DECREASE", payload: 5 });
   const resetHandler = () => dispatch({ type: "RESET" });
@@ -12,10 +18,12 @@ const Reducer = () => {
     <section className={`mt-10`}>
       <div className={`mb-1`}>
         <div className={`flex flex-col`}>
-          <h1 className={`text-xl`}>Reducer</h1>
-          <p className={`font-thin`}>Count: {state.count}</p>
+          <h1 className={`text-xl dark:text-white`}>Reducer</h1>
+          <p>Count: {state.count}</p>
         </div>
-        <div className={`mt-4 flex gap-x-3 border-b pb-3`}>
+        <div
+          className={`mt-4 flex gap-x-3 border-b pb-4 transition-colors duration-300 dark:border-b-slate-600`}
+        >
           <Button onClick={decreaseHandler} color={`bg-red-500`}>
             Decrease
           </Button>
@@ -26,7 +34,7 @@ const Reducer = () => {
             Increase
           </Button>
         </div>
-        <div className={`mt-3`}>
+        <div className={`mt-4`}>
           <p className={`font-medium`}>
             <span className={`font-bold`}>
               Reducer theme ({state.theme === "light" ? "🌞" : "🌙"}):

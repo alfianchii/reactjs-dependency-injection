@@ -7,10 +7,12 @@ const Home = () => {
   return (
     <section className={`mt-10`}>
       <div className={`mb-3`}>
-        <div className={`flex items-center justify-between border-b pb-5`}>
+        <div
+          className={`flex items-center justify-between border-b pb-5 transition-colors duration-300 dark:border-b-slate-600`}
+        >
           <div>
-            <h1 className={`text-xl`}>Home</h1>
-            <p className={`font-thin`}>Welcome back, {user.username}!</p>
+            <h1 className={`text-xl dark:text-white`}>Home</h1>
+            <p>Welcome back, {user.username}!</p>
           </div>
           <div>
             <img src={user.avatar} alt="Avatar" className={`rounded-lg`} />
