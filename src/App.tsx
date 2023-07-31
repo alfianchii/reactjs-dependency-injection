@@ -25,9 +25,9 @@ function App() {
               <Card.Body>
                 <Navbar
                   elements={{
-                    home: "/",
-                    profile: "/profile",
-                    reducer: "/reducer",
+                    home: "/reactjs-dependency-injection/",
+                    profile: "/reactjs-dependency-injection/profile",
+                    reducer: "/reactjs-dependency-injection/reducer",
                   }}
                 />
 
