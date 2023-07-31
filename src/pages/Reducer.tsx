@@ -18,8 +18,12 @@ const Reducer = () => {
     <section className={`mt-10`}>
       <div className={`mb-1`}>
         <div className={`flex flex-col`}>
-          <h1 className={`text-xl dark:text-white`}>Reducer</h1>
-          <p>Count: {state.count}</p>
+          <h1
+            className={`text-xl font-medium tracking-tight text-slate-500 transition-all duration-300 dark:text-white`}
+          >
+            Reducer
+          </h1>
+          <p className={`text-sm`}>Count: {state.count}</p>
         </div>
         <div
           className={`mt-4 flex gap-x-3 border-b pb-4 transition-colors duration-300 dark:border-b-slate-600`}

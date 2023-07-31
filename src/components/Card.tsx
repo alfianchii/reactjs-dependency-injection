@@ -23,7 +23,7 @@ const Title = ({ children, className = "" }: Props) => (
 
 const Body = ({ children, className = "" }: Props) => (
   <div
-    className={`p-4 text-sm leading-relaxed text-slate-500 dark:text-slate-400 ${className}`.trim()}
+    className={`p-4 text-sm leading-relaxed text-slate-500 transition-all duration-75 dark:text-slate-400 ${className}`.trim()}
   >
     {children}
   </div>
