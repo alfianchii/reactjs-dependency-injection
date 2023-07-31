@@ -18,7 +18,7 @@ function App() {
     <>
       <AppProvider>
         <ReducerProvider>
-          <PlaceContentCenter>
+          <PlaceContentCenter className={`box-border`}>
             <Card>
               <Card.Title className={`select-none`}>
                 {status ? "✅ Online!" : "❌ Disconnected ..."}

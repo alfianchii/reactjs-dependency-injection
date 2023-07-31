@@ -7,7 +7,7 @@ interface Props {
 
 const Card = ({ children, className = "" }: Props) => (
   <div
-    className={`overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-slate-900/5 transition-colors duration-300 dark:bg-slate-800 ${className}`.trim()}
+    className={`box-border overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-slate-900/5 transition-colors duration-300 dark:bg-slate-800 ${className}`.trim()}
   >
     {children}
   </div>

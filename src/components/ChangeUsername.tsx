@@ -16,7 +16,7 @@ const ChangeUsername = () => {
   };
 
   return (
-    <form onSubmit={changeUsernameHandler} className={`flex gap-x-2`}>
+    <form onSubmit={changeUsernameHandler} className={`mb-2 mt-3 flex gap-x-2`}>
       <Input
         autoFocus
         defaultValue={user.username}
