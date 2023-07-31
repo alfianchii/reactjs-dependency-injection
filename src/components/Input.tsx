@@ -8,7 +8,7 @@ const Input = forwardRef<
     type={type}
     ref={ref}
     {...rest}
-    className={`w-full rounded-lg border-slate-300 text-black shadow-sm outline-none transition-all duration-300 focus:border-blue-600 focus:ring focus:ring-blue-200 ${className}`.trim()}
+    className={`w-full rounded-lg border-slate-300 text-black placeholder-gray-600 shadow-sm outline-none transition-all duration-300 focus:border-blue-600 focus:ring focus:ring-blue-200 dark:border-slate-500 dark:bg-slate-900 dark:text-white dark:placeholder-gray-400 dark:focus:border-sky-200 dark:focus:ring dark:focus:ring-sky-600 ${className}`.trim()}
   />
 ));
 

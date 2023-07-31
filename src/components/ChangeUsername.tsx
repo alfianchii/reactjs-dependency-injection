@@ -20,6 +20,7 @@ const ChangeUsername = () => {
       <Input
         autoFocus
         defaultValue={user.username}
+        placeholder={`Your username ...`}
         onChange={(e) => setNewUsername(e.target.value)}
       />
       <Button className={`dark:bg-sky-500`}>Change!</Button>
