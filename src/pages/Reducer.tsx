@@ -19,7 +19,7 @@ const Reducer = () => {
       <div className={`mb-1`}>
         <div className={`flex flex-col`}>
           <h1
-            className={`text-xl font-medium tracking-tight text-slate-500 transition-all duration-300 dark:text-white`}
+            className={`text-xl font-medium tracking-tight text-black transition-all duration-300 dark:text-white`}
           >
             Reducer
           </h1>

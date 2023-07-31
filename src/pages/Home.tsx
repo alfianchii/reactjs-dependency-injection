@@ -12,7 +12,7 @@ const Home = () => {
         >
           <div>
             <h1
-              className={`text-xl font-medium tracking-tight text-slate-500 transition-all duration-300 dark:text-white`}
+              className={`text-xl font-medium tracking-tight text-black transition-all duration-300 dark:text-white`}
             >
               Home
             </h1>
