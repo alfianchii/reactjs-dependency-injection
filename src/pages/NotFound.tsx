@@ -1,9 +1,11 @@
 const NotFound = () => {
+  const baseUrl: string = import.meta.env.BASE_URL;
+
   return (
     <>
       <html>
         <head>
-          <meta http-equiv="refresh" content="1; url=/index.html" />
+          <meta http-equiv="refresh" content={`1; url=${baseUrl}`} />
         </head>
         <body>
           <section className={`mt-10`}>
