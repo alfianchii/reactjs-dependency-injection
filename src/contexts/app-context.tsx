@@ -36,16 +36,17 @@ const initialContext: AppContextProps = {
 export const AppContext = createContext<AppContextProps>(initialContext);
 
 const AppProvider = ({ children }: Props) => {
+  const baseUrl: string = import.meta.env.BASE_URL;
   const [user, setUser] = useState<UserProps>(initialStateUser);
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const data: UserProps = {
       username: "alfianchii",
-      avatar: "/src/assets/earl-phantomhive-1.jpg",
+      avatar: `${baseUrl}src/assets/earl-phantomhive-1.jpg`,
     };
     setUser(data);
-  }, []);
+  }, [baseUrl]);
 
   const appContextValue: AppContextProps = {
     user,
