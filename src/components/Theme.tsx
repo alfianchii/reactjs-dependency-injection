@@ -4,7 +4,7 @@ import ToggleTheme from "./ToggleTheme";
 const Theme = () => {
   return (
     <>
-      <section>
+      <section className={`flex flex-col items-center justify-center`}>
         <div className={`mt-4`}>
           <DisplayTheme />
         </div>

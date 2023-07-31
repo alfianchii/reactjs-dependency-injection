@@ -9,7 +9,7 @@ const DisplayTheme = () => {
     : body.removeAttribute("data-mode");
 
   return (
-    <p className={`font-medium`}>
+    <p className={`text-center font-medium`}>
       <span className={`font-bold`}>
         App theme ({theme === "light" ? "🌞" : "🌙"}):
       </span>{" "}
