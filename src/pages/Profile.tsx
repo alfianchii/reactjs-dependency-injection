@@ -12,8 +12,9 @@ const Profile = () => {
     <section className={`mt-10`}>
       <div className={`mb-3`}>
         <div
+          id="profile"
           style={{ height: 120 }}
-          className={`ransition-colors border-b pb-5 duration-300 dark:border-b-slate-600`}
+          className={`ransition-all border-b pb-5 duration-300 dark:border-b-slate-600`}
         >
           <div>
             <h1

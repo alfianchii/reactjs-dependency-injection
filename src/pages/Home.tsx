@@ -7,6 +7,7 @@ const Home = () => {
       user: { username, avatar },
     },
   ] = useAppContext();
+
   return (
     <section className={`mt-10`}>
       <div className={`mb-3`}>

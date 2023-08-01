@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import avatar from "../assets/ranpo-1.jpg";
+import { setItemWithExp, getItemWithExp } from "../helpers/localstorage";
 
 export type AppContextValue = [AppContextProps, React.Dispatch<AppAction>];
 
@@ -12,13 +13,13 @@ interface UserProps {
   avatar: string;
 }
 
-interface AppAction {
-  type: "UPDATE_USER" | "TOGGLE_THEME";
-  payload: UserProps;
-}
-
 interface AppContextProps {
   user: UserProps;
+}
+
+interface AppAction {
+  type: "UPDATE_USER";
+  payload?: UserProps;
 }
 
 const initialState: AppContextProps = {
@@ -33,7 +34,8 @@ const reducer = (
 ): AppContextProps => {
   switch (type) {
     case "UPDATE_USER":
-      return { ...state, user: payload };
+      setItemWithExp("USER", { ...state, user: payload });
+      return { ...getItemWithExp("USER") };
     default:
       throw new Error(`Unexpected type: ${type}`);
   }
@@ -43,10 +45,11 @@ const AppProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    const payload: UserProps = {
-      username: "alfianchii",
-      avatar,
-    };
+    // Set username and avatar
+    const userLocalProps: UserProps =
+      getItemWithExp("USER").user ?? initialState;
+    const username: string = userLocalProps.username ?? "alfianchii";
+    const payload: UserProps = { username, avatar };
     dispatch({ type: "UPDATE_USER", payload });
   }, []);
 

@@ -1,4 +1,5 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
+import { setItemWithExp, getItemWithExp } from "../helpers/localstorage";
 
 type Theme = "light" | "dark";
 
@@ -13,16 +14,24 @@ interface ThemeContextProps {
 }
 
 interface AppAction {
-  type: "TOGGLE_THEME";
+  type: "TOGGLE_THEME" | "SET_THEME";
+  payload?: Theme;
 }
 
 const reducer = (
   state: ThemeContextProps,
-  { type }: AppAction
+  { type, payload = "light" }: AppAction
 ): ThemeContextProps => {
   switch (type) {
     case "TOGGLE_THEME":
-      return { ...state, theme: state.theme === "light" ? "dark" : "light" };
+      setItemWithExp("THEME", {
+        ...state,
+        theme: state.theme === "light" ? "dark" : "light",
+      });
+      return { ...getItemWithExp("THEME") };
+    case "SET_THEME":
+      setItemWithExp("THEME", { ...state, theme: payload });
+      return { ...getItemWithExp("THEME") };
     default:
       throw new Error(`Unexpected type: ${type}`);
   }
@@ -34,6 +43,10 @@ export const ThemeContext = createContext<ThemeContextValue>(initialContext);
 
 const ThemeProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    dispatch({ type: "SET_THEME", payload: getItemWithExp("THEME").theme });
+  }, []);
 
   const themeContextValue: ThemeContextValue = [state, dispatch];
 
