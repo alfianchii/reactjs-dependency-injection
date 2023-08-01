@@ -9,8 +9,8 @@ import AppProvider from "./contexts/app-context";
 import ThemeProvider from "./contexts/theme-context";
 import CounterProvider from "./contexts/counter-context";
 import Routing from "./routes/Routing";
-
-const baseUrl: string = import.meta.env.BASE_URL;
+// Helpers
+import { baseUrl } from "./helpers/baseUrlPath";
 
 function App() {
   const status: boolean = useStatus();

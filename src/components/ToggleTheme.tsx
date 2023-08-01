@@ -1,12 +1,10 @@
+import { themeValidate } from "../helpers/themeChecking";
 import { useThemeContext } from "../hooks/useThemeContext";
 
 const ToggleTheme = () => {
   const [{ theme }, dispatch] = useThemeContext();
-  const body = document.documentElement;
 
-  theme === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? body.setAttribute("data-mode", "dark")
-    : body.removeAttribute("data-mode");
+  themeValidate(theme);
 
   const toggleThemeHandler = () => dispatch({ type: "TOGGLE_THEME" });
 

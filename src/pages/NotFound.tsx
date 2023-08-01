@@ -1,6 +1,7 @@
-const NotFound = () => {
-  const baseUrl: string = import.meta.env.BASE_URL;
+// Helpers
+import { baseUrl } from "../helpers/baseUrlPath";
 
+const NotFound = () => {
   return (
     <>
       <html>

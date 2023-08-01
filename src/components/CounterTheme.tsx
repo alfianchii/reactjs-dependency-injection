@@ -1,13 +1,10 @@
+import { themeValidate } from "../helpers/themeChecking";
 import { useCounterContext } from "../hooks/useCounterContext";
 
 const CounterTheme = () => {
   const [state, dispatch] = useCounterContext();
-  const body = document.documentElement;
 
-  state.theme === "dark" ||
-  window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? body.setAttribute("data-mode", "dark")
-    : body.removeAttribute("data-mode");
+  themeValidate(state.theme);
 
   return (
     <section className={`flex flex-col items-center justify-center`}>

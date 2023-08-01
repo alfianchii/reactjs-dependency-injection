@@ -1,13 +1,13 @@
 // Packages
 import { Route, Routes } from "react-router-dom";
+// Helpers
+import { baseUrl } from "../helpers/baseUrlPath";
 // Pages
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 import Counter from "../pages/Counter";
 import CounterSetting from "../pages/CounterSetting";
-
-const baseUrl: string = import.meta.env.BASE_URL;
 
 const Routing = () => {
   return (
