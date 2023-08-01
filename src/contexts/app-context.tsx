@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import avatar from "../assets/ranpo-1.jpg";
 
-type Theme = "light" | "dark";
+export type AppContextValue = [AppContextProps, React.Dispatch<AppAction>];
 
 interface Props {
   children: React.ReactNode;
@@ -14,26 +14,17 @@ interface UserProps {
 
 interface AppAction {
   type: "UPDATE_USER" | "TOGGLE_THEME";
-  payload?: UserProps;
+  payload: UserProps;
 }
 
 interface AppContextProps {
   user: UserProps;
-  theme: Theme;
 }
 
-export type AppContextValue = [AppContextProps, React.Dispatch<AppAction>];
-
 const initialState: AppContextProps = {
-  user: {
-    username: "",
-    avatar: "",
-  },
-  theme: "light",
+  user: { username: "", avatar: "" },
 };
-
 const initialContext: AppContextValue = [initialState, () => null];
-
 export const AppContext = createContext<AppContextValue>(initialContext);
 
 const reducer = (
@@ -43,15 +34,12 @@ const reducer = (
   switch (type) {
     case "UPDATE_USER":
       return { ...state, user: payload };
-    case "TOGGLE_THEME":
-      return { ...state, theme: state.theme === "light" ? "dark" : "light" };
     default:
       throw new Error(`Unexpected type: ${type}`);
   }
 };
 
 const AppProvider = ({ children }: Props) => {
-  const baseUrl: string = import.meta.env.BASE_URL;
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -60,7 +48,7 @@ const AppProvider = ({ children }: Props) => {
       avatar,
     };
     dispatch({ type: "UPDATE_USER", payload });
-  }, [baseUrl]);
+  }, []);
 
   const appContextValue: AppContextValue = [state, dispatch];
 

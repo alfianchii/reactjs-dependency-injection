@@ -1,7 +1,7 @@
-import { useAppContext } from "../hooks/useAppContext";
+import { useThemeContext } from "../hooks/useThemeContext";
 
 const DisplayTheme = () => {
-  const [{ theme }] = useAppContext();
+  const [{ theme }] = useThemeContext();
 
   return (
     <p className={`text-center font-medium`}>

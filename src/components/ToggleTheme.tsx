@@ -1,7 +1,7 @@
-import { useAppContext } from "../hooks/useAppContext";
+import { useThemeContext } from "../hooks/useThemeContext";
 
 const ToggleTheme = () => {
-  const [{ theme }, dispatch] = useAppContext();
+  const [{ theme }, dispatch] = useThemeContext();
   const body = document.documentElement;
 
   theme === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches
