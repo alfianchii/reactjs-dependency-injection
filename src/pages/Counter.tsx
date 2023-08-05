@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import Button from "../components/Button";
 import CounterTheme from "../components/CounterTheme";
 import { useCounterContext } from "../hooks/useCounterContext";
 
 const Counter = () => {
+  useEffect(() => {
+    document.title = "Counter";
+  }, []);
+
   const [state, dispatch] = useCounterContext();
 
   const decreaseHandler = () => dispatch({ type: "DECREASE", payload: 5 });

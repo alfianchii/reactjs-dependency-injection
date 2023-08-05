@@ -1,5 +1,11 @@
+import { useEffect } from "react";
 import CounterTheme from "../components/CounterTheme";
+
 const CounterSetting = () => {
+  useEffect(() => {
+    document.title = "Counter Settings";
+  }, []);
+
   return (
     <section className={`mt-10`}>
       <div className={`mb-3`}>

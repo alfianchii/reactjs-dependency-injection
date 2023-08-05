@@ -1,7 +1,12 @@
+import { useEffect } from "react";
 import Theme from "../components/Theme";
 import { useAppContext } from "../hooks/useAppContext";
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "Home";
+  }, []);
+
   const [
     {
       user: { username, avatar },

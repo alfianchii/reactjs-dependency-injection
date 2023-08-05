@@ -7,6 +7,7 @@ const NotFound = () => {
       <html>
         <head>
           <meta http-equiv="refresh" content={`1; url=${baseUrl}`} />
+          <title>Not Found</title>
         </head>
         <body>
           <section className={`mt-10`}>

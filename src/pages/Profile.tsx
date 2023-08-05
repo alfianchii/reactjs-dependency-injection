@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import ChangeUsername from "../components/ChangeUsername";
 import Theme from "../components/Theme";
 import { useAppContext } from "../hooks/useAppContext";
 
 const Profile = () => {
+  useEffect(() => {
+    document.title = "Profile";
+  }, []);
+
   const [
     {
       user: { username },
