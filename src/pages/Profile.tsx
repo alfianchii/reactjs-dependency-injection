@@ -8,6 +8,7 @@ const Profile = () => {
       user: { username },
     },
   ] = useAppContext();
+
   return (
     <section className={`mt-10`}>
       <div className={`mb-3`}>
@@ -22,7 +23,9 @@ const Profile = () => {
             >
               Profile
             </h1>
-            <p className={`text-sm`}>Username: {username}</p>
+            <p className={`text-sm transition-all duration-300`}>
+              Username: {username}
+            </p>
           </div>
           <div
             className={`mt-2 transition-colors duration-300 dark:border-b-slate-600`}

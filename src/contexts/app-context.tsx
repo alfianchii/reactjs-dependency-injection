@@ -23,7 +23,7 @@ interface AppAction {
 }
 
 const initialState: AppContextProps = {
-  user: { username: "", avatar: "" },
+  user: getItemWithExp("USER").user ?? { username: "alfianchii", avatar },
 };
 const initialContext: AppContextValue = [initialState, () => null];
 export const AppContext = createContext<AppContextValue>(initialContext);
@@ -47,10 +47,8 @@ const AppProvider = ({ children }: Props) => {
   useEffect(() => {
     // Set username and avatar
     const userLocalProps: UserProps =
-      getItemWithExp("USER").user ?? initialState;
-    const username: string = userLocalProps.username ?? "alfianchii";
-    const payload: UserProps = { username, avatar };
-    dispatch({ type: "UPDATE_USER", payload });
+      getItemWithExp("USER").user ?? initialState.user;
+    dispatch({ type: "UPDATE_USER", payload: userLocalProps });
   }, []);
 
   const appContextValue: AppContextValue = [state, dispatch];
