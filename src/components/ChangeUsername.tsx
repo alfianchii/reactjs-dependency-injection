@@ -7,30 +7,38 @@ const ChangeUsername = () => {
   const [{ user }, dispatch] = useAppContext();
   const [message, setMessage] = useState<string>("");
   const changeUsernameRef = useRef<HTMLInputElement>(null);
+  const profileElement = document.getElementById("profile");
+  const usernameElement = profileElement?.firstElementChild?.lastElementChild;
 
   // Style
   const applyMessage = (msg: string = message, height: string = "120px") => {
-    setMessage(msg);
-    const profileElement = document.getElementById("profile");
-    if (profileElement) {
-      profileElement.style.height = height;
-    }
+    setTimeout(() => {
+      setMessage(msg);
+      profileElement!.style!.height = height;
+    }, 150);
   };
 
   const changeUsernameHandler = (event: React.FormEvent) => {
     event.preventDefault();
+    usernameElement?.classList.add("opacity-0");
+
     // Validates input
     const value: string = changeUsernameRef.current?.value || "";
     if (!value) return applyMessage("Name couldn't be empty!", "140px");
+
     // Set username
     applyMessage("");
-    dispatch({
-      type: "UPDATE_USER",
-      payload: {
-        ...user,
-        username: value,
-      },
-    });
+    setTimeout(() => {
+      dispatch({
+        type: "UPDATE_USER",
+        payload: {
+          ...user,
+          username: value,
+        },
+      });
+
+      usernameElement?.classList.remove("opacity-0");
+    }, 300);
   };
 
   return (
@@ -44,7 +52,9 @@ const ChangeUsername = () => {
         />
         <Button className={`dark:bg-sky-500`}>Change!</Button>
       </div>
-      <div className={`text-red-500`}>{message}</div>
+      <div className={`text-red-500 transition-all duration-300`}>
+        {message}
+      </div>
     </form>
   );
 };
