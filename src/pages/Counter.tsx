@@ -10,9 +10,9 @@ const Counter = () => {
 
   const [state, dispatch] = useCounterContext();
 
-  const decreaseHandler = () => dispatch({ type: "DECREASE", payload: 5 });
+  const decreaseHandler = () => dispatch({ type: "DECREASE" });
   const resetHandler = () => dispatch({ type: "RESET" });
-  const increaseHandler = () => dispatch({ type: "INCREASE", payload: 10 });
+  const increaseHandler = () => dispatch({ type: "INCREASE" });
 
   return (
     <section className={`mt-10`}>
@@ -27,7 +27,7 @@ const Counter = () => {
             >
               Counter w/ Reducer
             </h1>
-            <p className={`text-sm`}>Count: {state.count}</p>
+            <p className={`text-sm`}>Count: {state.count.value}</p>
           </div>
 
           <div className={`mt-3 flex gap-x-3 `}>
