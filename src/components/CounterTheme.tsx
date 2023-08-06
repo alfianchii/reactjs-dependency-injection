@@ -11,7 +11,7 @@ const CounterTheme = () => {
       <div className={`mt-4`}>
         <p className={`font-medium`}>
           <span className={`font-bold`}>
-            App theme ({state.theme === "light" ? "🌞" : "🌙"}):
+            Counter theme ({state.theme === "light" ? "🌞" : "🌙"}):
           </span>
           {` ${state.theme}`}
         </p>
