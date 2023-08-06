@@ -13,7 +13,7 @@ const CounterSetting = () => {
   const changeDecreaseHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    if (isNaN(parseInt(event.target.value)))
+    if (!parseInt(event.target.value))
       return (event.target.value = `${state.count.decrease}`);
 
     dispatch({
@@ -28,7 +28,7 @@ const CounterSetting = () => {
   const changeIncreaseHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    if (isNaN(parseInt(event.target.value)))
+    if (!parseInt(event.target.value))
       return (event.target.value = `${state.count.increase}`);
 
     dispatch({
