@@ -7,20 +7,22 @@ const ChangeUsername = () => {
   const [{ user }, dispatch] = useAppContext();
   const [message, setMessage] = useState<string>("");
   const changeUsernameRef = useRef<HTMLInputElement>(null);
-  const profileElement = document.getElementById("profile");
-  const usernameElement = profileElement?.firstElementChild?.lastElementChild;
-
-  // Style
-  const applyMessage = (msg: string = message, height: string = "120px") => {
-    setTimeout(() => {
-      setMessage(msg);
-      profileElement!.style!.height = height;
-    }, 150);
-  };
 
   const changeUsernameHandler = (event: React.FormEvent) => {
     event.preventDefault();
+
+    const profileElement = document.getElementById("profile");
+    const usernameElement = profileElement?.firstElementChild?.lastElementChild;
+
     usernameElement?.classList.add("opacity-0");
+
+    // Style
+    const applyMessage = (msg: string = message, height: string = "120px") => {
+      setTimeout(() => {
+        setMessage(msg);
+        profileElement!.style!.height = height;
+      }, 100);
+    };
 
     // Validates input
     const value: string = changeUsernameRef.current?.value || "";

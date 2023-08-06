@@ -20,7 +20,7 @@ const Profile = () => {
         <div
           id="profile"
           style={{ height: 120 }}
-          className={`ransition-all border-b pb-5 duration-300 dark:border-b-slate-600`}
+          className={`border-b pb-5 transition-all duration-300 dark:border-b-slate-600`}
         >
           <div>
             <h1
