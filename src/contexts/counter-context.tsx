@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from "react";
+import { setItemWithExp, getItemWithExp } from "../helpers/localstorage";
 
 type Theme = "light" | "dark";
 
@@ -57,22 +58,24 @@ const reducer = (
     case "TOGGLE_THEME":
       return { ...state, theme: state.theme === "light" ? "dark" : "light" };
     case "SET_DECREASE":
-      return {
+      setItemWithExp("COUNTER", {
         ...state,
         count: { ...state.count, decrease: payload.decrease },
-      };
+      });
+      return { ...getItemWithExp("COUNTER") };
     case "SET_INCREASE":
-      return {
+      setItemWithExp("COUNTER", {
         ...state,
         count: { ...state.count, increase: payload.increase },
-      };
+      });
+      return { ...getItemWithExp("COUNTER") };
     default:
       throw new Error(`Unexpected type: ${type}`);
   }
 };
 
 const initialState: AppState = {
-  count: {
+  count: getItemWithExp("COUNTER").count ?? {
     value: 0,
     decrease: 1,
     increase: 1,

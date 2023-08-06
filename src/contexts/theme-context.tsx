@@ -25,10 +25,6 @@ const reducer = (
 ): ThemeContextProps => {
   switch (type) {
     case "TOGGLE_THEME":
-      console.log(
-        "State: " + state.theme,
-        "Local: " + getItemWithExp("THEME").theme
-      );
       setItemWithExp("THEME", {
         ...state,
         theme: state.theme === "light" ? "dark" : "light",
